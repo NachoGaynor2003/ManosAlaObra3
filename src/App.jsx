@@ -1,7 +1,19 @@
-import "./App.css";
+import './App.css';
+import Encabezado from './Components/Atoms/Encabezado';
+import Lista from './Components/Atoms/Lista';
+import InputTask from './Components/Atoms/InputTask';
 
 function App() {
   return (
+    <div>
+      <Encabezado></Encabezado>
+      <InputTask></InputTask>
+      <Lista></Lista>
+    </div>
+  );
+
+  //agregar los parentesis para empezar a trabajar
+  /*
     <div className="contenedor1">
       <h1 className="encabezado" style={{ textAlign: "center" }}>
         Lista de Tareas de Nacho
@@ -21,8 +33,9 @@ function App() {
           <p className="TachoBasura">&#128465;</p>
         </div>
         <div className="item-tarea">
-          <input type="checkbox" />
-          Completed Task N-2
+          <input type="checkbox" checked />
+          <del>Completed Task N-2</del>
+
           <p className="TachoBasura">&#128465;</p>
         </div>
         <div className="item-tarea">
@@ -34,12 +47,13 @@ function App() {
           Task 2<p className="TachoBasura">&#128465;</p>
         </div>
         <div className="item-tarea">
-          <input type="checkbox" />
-          Completed Task 1<p className="TachoBasura">&#128465;</p>
+          <input type="checkbox" checked />
+          <del>Completed Task 1</del>
+          <p className="TachoBasura">&#128465;</p>
         </div>
       </div>
     </div>
-  );
+  */
 }
 
 export default App;
