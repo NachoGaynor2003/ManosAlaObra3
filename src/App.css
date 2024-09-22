@@ -47,22 +47,30 @@
   gap: 8px; /* Añade espacio entre el input y el botón */
   margin-top: 10px; /* Ajusta el espacio superior si es necesario */
 }
+body {
 
+
+
+  font-size:larger;
+}
 .contenedor-de-tareas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 300px; /* Ajusta el tamaño según sea necesario */
   margin: 20px auto;
 }
 
 .item-tarea {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: start;
   border: 1px solid #000;
-  padding: 10px;
+  padding: 5px;
   margin-bottom: 10px;
   border-radius: 4px;
   background-color: #fff;
-  width: 100%; /* Para asegurarse de que se ajuste al contenedor */
+  width: 50%; /* Para asegurarse de que se ajuste al contenedor */
 }
 
 .completed {

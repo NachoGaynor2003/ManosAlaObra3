@@ -1,41 +1,62 @@
-function ListaItemCheckbox() {
+import PropTypes from 'prop-types';
+
+function Lista({ tasks, toggleTaskCompletion, deleteTask }) {
   return (
-    <div className="contenedor-de-tareas" style={{ textAlign: 'center' }}>
-      <div className="item-tarea">
-        <input type="checkbox" />
-        Task N <p className="TachoBasura">&#128465;</p>
-      </div>
-
-      <div className="item-tarea">
-        <input type="checkbox" />
-        Task N-1
-        <p className="TachoBasura">&#128465;</p>
-      </div>
-
-      <div className="item-tarea">
-        <input type="checkbox" checked />
-        <del>Completed Task N-2</del> 
-        <p className="TachoBasura">&#128465;</p>
-      </div>
-
-      <div className="item-tarea">
-        <input type="checkbox" />
-        Task K
-        <p className="TachoBasura">&#128465;</p>
-      </div>
-
-      <div className="item-tarea">
-        <input type="checkbox" />
-        Task 2
-        <p className="Tachobasura">&#128465;</p>
-      </div>
-
-      <div className="item-tarea">
-        <input type="checkbox" checked />
-        <del>Completed Task 1</del>
-        <p className="TachoBasura">&#128465;</p>
-      </div>
+    <div>
+      {tasks.length === 0 ? ( // Verifica si el array está vacío
+        <p>No hay tareas disponibles.</p> // Mensaje cuando no hay tareas
+      ) : (
+        <ul>
+          {tasks
+            .slice()
+            .reverse()
+            .map(
+              (
+                task // Invertimos el array de tareas
+              ) => (
+                <li key={task.id} className="item-tarea">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={task.estado === 'Completada'}
+                      onChange={() => toggleTaskCompletion(task.id)}
+                    />
+                    <span
+                      style={{
+                        textDecoration:
+                          task.estado === 'Completada'
+                            ? 'line-through'
+                            : 'none',
+                      }}
+                    >
+                      {task.titulo}
+                    </span>
+                  </label>
+                  <button
+                    className="TachoBasura"
+                    onClick={() => deleteTask(task.id)}
+                  >
+                    &#128465;
+                  </button>
+                </li>
+              )
+            )}
+        </ul>
+      )}
     </div>
   );
 }
-export default ListaItemCheckbox;
+
+Lista.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      titulo: PropTypes.string.isRequired,
+      estado: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  toggleTaskCompletion: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+};
+
+export default Lista;
